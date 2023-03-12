@@ -97,10 +97,10 @@ const employee = () => {
   }
 
   const cardClick = (e) => {
-    const transformedEmployees = employees.map((employee) => {
-      return employee.id === parseInt(e.currentTarget.id) ? (employee.teamName === selectedTeam) ? { ...employee, teamName: '' } : { ...employee, teamName: selectedTeam } : employee
-    })
+    const transformedEmployees = employees.map((employee) => employee.id === parseInt(e.currentTarget.id) ? (employee.teamName === selectedTeam) ? { ...employee, teamName: ''} : { ...employee, teamName: selectedTeam } : employee)
+// the e.currentTarget.id refer to attribute id on element not the data's id, it also can not substitute to key since key only for track elements can not be accessed
     setEmployees(transformedEmployees)
+    console.log(transformedEmployees)
     //toggle the teamName, if person belongs to team selected(first hook), empty the string(remove by click), if it doesn't belongs to it, add by click the card
   }
 
@@ -120,7 +120,7 @@ const employee = () => {
         <div className='col-8'>
           <div className='card-collection'>
             {employees.map(e => (
-              <div key={e.id} className={e.teamName === selectedTeam?'card m-2 standout':'card m-2'} style={{ cursor: "pointer" }} onClick={cardClick}>
+              <div key = {e.id} id={e.id} className={e.teamName === selectedTeam?'card m-2 standout':'card m-2'} style={{ cursor: "pointer" }} onClick={cardClick}>
                 <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
                 <div className='card-body'>
                   <h5 className='card-title'>{e.fullName}</h5>
