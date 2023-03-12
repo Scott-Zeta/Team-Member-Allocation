@@ -89,12 +89,19 @@ const employee = () => {
   }])
 
   return (
-    <main>
-      {employees.map(e => (
-        <div key={e.id}>
-          <img src={femaleProfile} />
-          <p>{e.fullName}</p>
-        </div>))}
+    <main className='container'>
+      <div className='row'>
+        <div className='col-8'>
+          {employees.map(e => (
+            <div key={e.id} className='card'>
+              <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
+              <div className='card-body'>
+                <h5 className='card-title'>{e.fullName}</h5>
+                <p className='card-text'><b>Designation</b>: {e.designation}</p>
+              </div>
+            </div>))}
+        </div>
+      </div>
     </main>
   )
 }
