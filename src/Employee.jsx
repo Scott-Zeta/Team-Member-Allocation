@@ -4,7 +4,7 @@ import maleProfile from './image/maleProfile.jpg'
 
 const employee = () => {
   const [selectedTeam, setTeam] = useState("TeamA")
-  
+
   const [employees, setEmployees] = useState([{
     id: 1,
     fullName: "Bob Jones",
@@ -96,10 +96,14 @@ const employee = () => {
     //e alrady been pass by onChange event
   }
 
-  const cardClick = (e) =>{
-    console.log("click the card")
+  const cardClick = (e) => {
+    const transformedEmployees = employees.map((employee) => {
+      return employee.id === parseInt(e.currentTarget.id) ? (employee.teamName === selectedTeam) ? { ...employee, teamName: '' } : { ...employee, teamName: selectedTeam } : employee
+    })
+    setEmployees(transformedEmployees)
+    //toggle the teamName, if person belongs to team selected(first hook), empty the string(remove by click), if it doesn't belongs to it, add by click the card
   }
-  
+
   return (
     <main className='container'>
       <div className='row justify-content-center mt-3 mb-3'>
