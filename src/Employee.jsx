@@ -94,7 +94,7 @@ const employee = () => {
         <div className='col-8'>
           <div className='card-collection'>
             {employees.map(e => (
-              <div key={e.id} className='card'>
+              <div key={e.id} className='card m-2'>
                 <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
                 <div className='card-body'>
                   <h5 className='card-title'>{e.fullName}</h5>
