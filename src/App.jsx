@@ -1,9 +1,16 @@
 import './App.css'
+import Footer from './Footer'
+import Header from './Header'
+import Content from './Content'
 
-export default function App() {
+function App() {
   return (
-    <main>
-      React ⚛️ + Vite ⚡ + Replit 🌀
-    </main>
+    <div>
+      <Header/>
+      <Content/>
+      <Footer/>
+    </div>
   )
 }
+
+export default App;
