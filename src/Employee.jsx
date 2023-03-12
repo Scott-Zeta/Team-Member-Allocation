@@ -3,6 +3,8 @@ import femaleProfile from './image/femaleProfile.jpg'
 import maleProfile from './image/maleProfile.jpg'
 
 const employee = () => {
+  const [selectedTeam, setTeam] = useState("TeamC")
+  
   const [employees, setEmployees] = useState([{
     id: 1,
     fullName: "Bob Jones",
@@ -88,11 +90,16 @@ const employee = () => {
     teamName: "TeamD"
   }])
 
+  const changeTeam = (e) => {
+    console.log(e.target.value)
+    setTeam(e.target.value)
+  }
+  
   return (
     <main className='container'>
       <div className='row justify-content-center mt-3 mb-3'>
         <div className='col-6'>
-          <select className='form-select form-select-lg'>
+          <select className='form-select form-select-lg' value={selectedTeam} onChange={changeTeam}>
             <option value="TeamA">Team A</option>
             <option value="TeamB">Team B</option>
             <option value="TeamC">Team C</option>
