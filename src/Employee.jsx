@@ -92,7 +92,7 @@ const employee = () => {
     <main className='container'>
       <div className='row justify-content-center mt-3 mb-3'>
         <div className='col-6'>
-          <select>
+          <select className='form-select form-select-lg'>
             <option value="TeamA">Team A</option>
             <option value="TeamB">Team B</option>
             <option value="TeamC">Team C</option>
