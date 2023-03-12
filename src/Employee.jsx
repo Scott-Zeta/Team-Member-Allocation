@@ -120,7 +120,7 @@ const employee = () => {
         <div className='col-8'>
           <div className='card-collection'>
             {employees.map(e => (
-              <div key={e.id} className='card m-2' style={{ cursor: "pointer" }} onClick={cardClick}>
+              <div key={e.id} className={e.teamName === selectedTeam?'card m-2 standout':'card m-2'} style={{ cursor: "pointer" }} onClick={cardClick}>
                 <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
                 <div className='card-body'>
                   <h5 className='card-title'>{e.fullName}</h5>
