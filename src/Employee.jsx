@@ -3,7 +3,7 @@ import femaleProfile from './image/femaleProfile.jpg'
 import maleProfile from './image/maleProfile.jpg'
 
 const employee = () => {
-  const [selectedTeam, setTeam] = useState("TeamC")
+  const [selectedTeam, setTeam] = useState("TeamA")
   
   const [employees, setEmployees] = useState([{
     id: 1,
@@ -93,6 +93,11 @@ const employee = () => {
   const changeTeam = (e) => {
     console.log(e.target.value)
     setTeam(e.target.value)
+    //e alrady been pass by onChange event
+  }
+
+  const cardClick = (e) =>{
+    console.log("click the card")
   }
   
   return (
@@ -111,7 +116,7 @@ const employee = () => {
         <div className='col-8'>
           <div className='card-collection'>
             {employees.map(e => (
-              <div key={e.id} className='card m-2' style={{ cursor: "pointer" }}>
+              <div key={e.id} className='card m-2' style={{ cursor: "pointer" }} onClick={cardClick}>
                 <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
                 <div className='card-body'>
                   <h5 className='card-title'>{e.fullName}</h5>
