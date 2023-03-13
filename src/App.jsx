@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Header from './Header'
 import Employee from './Employee'
 import Groupmember from './GroupMember'
+import Nav from './Nav'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -125,6 +126,7 @@ function App() {
 
   return (
     <Router>
+      <Nav/>
       <Header countMember={countMember(employees, selectedTeam)} selectedTeam={selectedTeam} />
       <Routes>
         <Route path='/' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
