@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './App.css'
 import Footer from './Footer'
@@ -8,9 +8,9 @@ import Employee from './Employee'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [selectedTeam, setTeam] = useState("TeamA")
+  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam'))||"TeamA")
 
-  const [employees, setEmployees] = useState([{
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList'))||[{
     id: 1,
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
@@ -95,6 +95,14 @@ function App() {
     teamName: "TeamD"
   }])
 
+  useEffect(() => {
+    localStorage.setItem('employeeList', JSON.stringify(employees))
+  }, [employees])
+
+  useEffect(() => {
+    localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam))
+  }, [selectedTeam])
+
   const changeTeam = (e) => {
     console.log(e.target.value)
     setTeam(e.target.value)
@@ -109,13 +117,13 @@ function App() {
     //toggle the teamName, if person belongs to team selected(first hook), empty the string(remove by click), if it doesn't belongs to it, add by click the card
   }
 
-  const countMember = (employees,selectedTeam) => {
-    return employees.filter((e)=>e.teamName===selectedTeam).length    
+  const countMember = (employees, selectedTeam) => {
+    return employees.filter((e) => e.teamName === selectedTeam).length
   }
 
   return (
     <div>
-      <Header countMember = {countMember(employees,selectedTeam)} selectedTeam={selectedTeam}/>
+      <Header countMember={countMember(employees, selectedTeam)} selectedTeam={selectedTeam} />
       <Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />
       <Footer />
     </div>
