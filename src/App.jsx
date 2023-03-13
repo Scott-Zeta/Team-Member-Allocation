@@ -131,6 +131,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
         <Route path='/groupMember' element={<Groupmember />}></Route>
+        <Route path='*' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
       </Routes>
       <Footer />
     </Router>
