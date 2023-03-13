@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import{BrowserRouter as Router} from 'react-router-dom'
 
 import './App.css'
 import Footer from './Footer'
