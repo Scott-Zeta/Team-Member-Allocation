@@ -6,19 +6,19 @@ const groupmember = ({ selectedTeam, employees, changeTeam }) => {
   function groupTeamMembers() {
     let teams = [];
 
-    let teamAMembers = employees.filter((e) => e.teamName === 'TeamA')
+    let teamAMembers = employees.filter((e) => e.teamName.includes('TeamA'))
     let teamA = { team: 'TeamA', members: teamAMembers, collapsed: selectedTeam === 'TeamA' ? false : true }
     teams.push(teamA)
 
-    let teamBMembers = employees.filter((e) => e.teamName === 'TeamB')
+    let teamBMembers = employees.filter((e) => e.teamName.includes('TeamB'))
     let teamB = { team: 'TeamB', members: teamBMembers, collapsed: selectedTeam === 'TeamB' ? false : true }
     teams.push(teamB)
 
-    let teamCMembers = employees.filter((e) => e.teamName === 'TeamC')
+    let teamCMembers = employees.filter((e) => e.teamName.includes('TeamC'))
     let teamC = { team: 'TeamC', members: teamCMembers, collapsed: selectedTeam === 'TeamC' ? false : true }
     teams.push(teamC)
 
-    let teamDMembers = employees.filter((e) => e.teamName === 'TeamD')
+    let teamDMembers = employees.filter((e) => e.teamName.includes('TeamD'))
     let teamD = { team: 'TeamD', members: teamDMembers, collapsed: selectedTeam === 'TeamD' ? false : true }
     teams.push(teamD)
 
