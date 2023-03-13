@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
-import{BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './App.css'
 import Footer from './Footer'
 import Header from './Header'
 import Employee from './Employee'
+import Groupmember from './GroupMember'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam'))||"TeamA")
+  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam')) || "TeamA")
 
-  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList'))||[{
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList')) || [{
     id: 1,
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
@@ -123,11 +124,14 @@ function App() {
   }
 
   return (
-    <div>
+    <Router>
       <Header countMember={countMember(employees, selectedTeam)} selectedTeam={selectedTeam} />
-      <Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />
+      <Routes>
+        <Route path='/' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
+        <Route path='/groupMember' element={<Groupmember />}></Route>
+      </Routes>
       <Footer />
-    </div>
+    </Router>
   )
 }
 
