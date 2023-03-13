@@ -18,84 +18,84 @@ function App() {
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
     gender: "male",
-    teamName: "TeamA"
+    teamName: ["TeamA"]
   },
   {
     id: 2,
     fullName: "Jill Bailey",
     designation: "Node Developer",
     gender: "female",
-    teamName: "TeamA"
+    teamName: ["TeamA", "TeamB"]
   },
   {
     id: 3,
     fullName: "Gail Shepherd",
     designation: "Java Developer",
     gender: "female",
-    teamName: "TeamA"
+    teamName: ["TeamA"]
   },
   {
     id: 4,
     fullName: "Sam Reynolds",
     designation: "React Developer",
     gender: "male",
-    teamName: "TeamB"
+    teamName: ["TeamB", "TeamC"]
   },
   {
     id: 5,
     fullName: "David Henry",
     designation: "DotNet Developer",
     gender: "male",
-    teamName: "TeamB"
+    teamName: ["TeamA", "TeamB", "TeamC"]
   },
   {
     id: 6,
     fullName: "Sarah Blake",
     designation: "SQL Server DBA",
     gender: "female",
-    teamName: "TeamB"
+    teamName: ["TeamB", "TeamC"]
   },
   {
     id: 7,
     fullName: "James Bennet",
     designation: "Angular Developer",
     gender: "male",
-    teamName: "TeamC"
+    teamName: ["TeamC"]
   },
   {
     id: 8,
     fullName: "Jessica Faye",
     designation: "API Developer",
     gender: "female",
-    teamName: "TeamC"
+    teamName: ["TeamA", "TeamC"]
   },
   {
     id: 9,
     fullName: "Lita Stone",
     designation: "C++ Developer",
     gender: "female",
-    teamName: "TeamC"
+    teamName: ["TeamB", "TeamC"]
   },
   {
     id: 10,
     fullName: "Daniel Young",
     designation: "Python Developer",
     gender: "male",
-    teamName: "TeamD"
+    teamName: ["TeamD"]
   },
   {
     id: 11,
     fullName: "Adrian Jacobs",
     designation: "Vue Developer",
     gender: "male",
-    teamName: "TeamD"
+    teamName: ["TeamD"]
   },
   {
     id: 12,
     fullName: "Devin Monroe",
     designation: "Graphic Designer",
     gender: "male",
-    teamName: "TeamD"
+    teamName: []
   }])
 
   useEffect(() => {
@@ -113,7 +113,7 @@ function App() {
   }
 
   const cardClick = (e) => {
-    const transformedEmployees = employees.map((employee) => employee.id === parseInt(e.currentTarget.id) ? (employee.teamName === selectedTeam) ? { ...employee, teamName: '' } : { ...employee, teamName: selectedTeam } : employee)
+    const transformedEmployees = employees.map((employee) => employee.id === parseInt(e.currentTarget.id) ? (employee.teamName.includes(selectedTeam)) ? { ...employee, teamName: employee.teamName.filter((t)=> t !== selectedTeam) } : { ...employee, teamName: [...employee.teamName,selectedTeam] } : employee)
     // the e.currentTarget.id refer to attribute id on element not the data's id, it also can not substitute to key since key only for track elements can not be accessed
     setEmployees(transformedEmployees)
     console.log(transformedEmployees)
@@ -121,7 +121,7 @@ function App() {
   }
 
   const countMember = (employees, selectedTeam) => {
-    return employees.filter((e) => e.teamName === selectedTeam).length
+    return employees.filter((e) => e.teamName.includes(selectedTeam)).length
   }
 
   return (

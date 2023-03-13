@@ -9,14 +9,14 @@ const employee = ({ changeTeam, employees, cardClick, selectedTeam }) => {
     <main className='container'>
       <div className='row justify-content-center mt-3 mb-3'>
         <div className='col-6'>
-          <Teambar selectedTeam={selectedTeam} changTeam={changeTeam}/>
+          <Teambar selectedTeam={selectedTeam} changeTeam={changeTeam}/>
         </div>
       </div>
       <div className='row justify-content-center mt-3 mb-3'>
         <div className='col-8'>
           <div className='card-collection'>
             {employees.map(e => (
-              <div key={e.id} id={e.id} className={e.teamName === selectedTeam ? 'card m-2 standout' : 'card m-2'} style={{ cursor: "pointer" }} onClick={cardClick}>
+              <div key={e.id} id={e.id} className={e.teamName.includes(selectedTeam) ? 'card m-2 standout' : 'card m-2'} style={{ cursor: "pointer" }} onClick={cardClick}>
                 <img src={e.gender === 'male' ? maleProfile : femaleProfile} className='card-img-top' />
                 <div className='card-body'>
                   <h5 className='card-title'>{e.fullName}</h5>
