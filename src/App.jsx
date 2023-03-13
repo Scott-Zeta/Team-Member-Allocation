@@ -109,9 +109,13 @@ function App() {
     //toggle the teamName, if person belongs to team selected(first hook), empty the string(remove by click), if it doesn't belongs to it, add by click the card
   }
 
+  const countMember = (employees,selectedTeam) => {
+    return employees.filter((e)=>e.teamName===selectedTeam).length    
+  }
+
   return (
     <div>
-      <Header />
+      <Header countMember = {countMember(employees,selectedTeam)} selectedTeam={selectedTeam}/>
       <Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />
       <Footer />
     </div>
