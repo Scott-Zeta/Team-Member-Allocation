@@ -1,7 +1,7 @@
 const footer = () => {
   return (
     <footer>
-      <h1>footer</h1>
+      <p>Team Allocation by Scott-Zeta</p>
     </footer>
   )
 }

@@ -126,11 +126,11 @@ function App() {
 
   return (
     <Router>
-      <Nav/>
-      <Header countMember={countMember(employees, selectedTeam)} selectedTeam={selectedTeam} />
+      <Nav />
+      <Header countMember={countMember(employees, selectedTeam)} selectedTeam={selectedTeam} employees={employees} />
       <Routes>
         <Route path='/' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
-        <Route path='/groupMember' element={<Groupmember employees={employees} changeTeam={changeTeam} selectedTeam={selectedTeam}/>}></Route>
+        <Route path='/groupMember' element={<Groupmember employees={employees} changeTeam={changeTeam} selectedTeam={selectedTeam} />}></Route>
         <Route path='*' element={<Employee cardClick={cardClick} employees={employees} selectedTeam={selectedTeam} changeTeam={changeTeam} />}></Route>
       </Routes>
       <Footer />
