@@ -9,7 +9,7 @@ const Dashboard = ({ selectedTeam, countMember, employees }) => {
         })
         }
       </div>
-      <h4 style={{ color: 'gold' }}>People currently been assigned more than 2 team</h4>
+      <h4 style={{ color: 'gold' }}>People currently been assigned to more than 2 team</h4>
       <div className="card-collection">{employees.map((e) => {
           return e.teamName.length > 2 ? <p key={e.id}>{e.fullName}</p> : null
         })
